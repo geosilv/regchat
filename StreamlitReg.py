@@ -9,12 +9,12 @@ st.set_page_config(page_title="Banking Regulations Chatbot: Model Risk", page_ic
 
 # Load secrets from a file
 '''
-with open('secrets.json', 'r') as f:
-    secrets = json.load(f)
+#with open('secrets.json', 'r') as f:
+#    secrets = json.load(f)
 
-PINECONE_API_KEY = secrets['PINECONE_API_KEY']
-INDEX_HOST = secrets['INDEX_HOST']
-OPENAI_API_KEY = secrets['OPENAI_API_KEY']
+#PINECONE_API_KEY = secrets['PINECONE_API_KEY']
+#INDEX_HOST = secrets['INDEX_HOST']
+#OPENAI_API_KEY = secrets['OPENAI_API_KEY']
 '''
 
 
