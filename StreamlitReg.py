@@ -179,7 +179,24 @@ def get_gpt_response(client, prompt: str) -> str:
 
 def main():
     st.set_page_config(page_title="Banking Regulations Chatbot: Model Risk", page_icon="📚", layout="wide")
-    
+    st.markdown(
+    """
+    <h1 style='font-size:24px; color:black; margin-bottom:0;'>
+    Banking Regulations Chatbot: Model Risk
+    </h1>
+    """, 
+    unsafe_allow_html=True
+)
+
+    st.markdown(
+    """
+    <p style='font-size:16px; color:gray;'>
+    A tool for synthesizing and comparing regulatory insights on model risk management.
+    </p>
+    """, 
+    unsafe_allow_html=True
+)
+ #   st.subheader("A tool for synthesizing and comparing regulatory insights on model risk management.")
     # Initialize components
     try:
         model = initialize_model()
@@ -194,7 +211,7 @@ def main():
         return
 
     # Display title and sidebar
-    st.title("Banking Regulations Chatbot: Model Risk")
+    #st.title("Banking Regulations Chatbot: Model Risk")
     
     with st.sidebar:
         st.title("Available Documents")
