@@ -9,7 +9,7 @@ from search_utils import search_regulations, generate_embedding
 
 
 
-st.set_page_config(page_title="Banking Regulations Chatbot: Model Risk", page_icon="📚", layout="wide")
+st.set_page_config(page_title="Banking Regulations Chatbot", page_icon="📚", layout="wide")
 
 
 
@@ -112,7 +112,7 @@ def setup_page_header():
     st.markdown(
         """
         <h1 style='font-size:24px; color:black; margin-bottom:0;'>
-        Banking Regulations Chatbot: Model Risk
+        Banking Regulations Chatbot: Model Risk v 0.2
         </h1>
         """, 
         unsafe_allow_html=True

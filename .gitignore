@@ -8,6 +8,7 @@ venv/
 # Secrets files
 secrets.json
 .streamlit\secrets.json
+.streamlit/secrets.toml
 
 # VS Code settings
 .vscode/
