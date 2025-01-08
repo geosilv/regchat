@@ -6,12 +6,21 @@ import re
 import json
 
 # Load secrets from a file
+'''
 with open('secrets.json', 'r') as f:
     secrets = json.load(f)
 
 PINECONE_API_KEY = secrets['PINECONE_API_KEY']
 INDEX_HOST = secrets['INDEX_HOST']
 OPENAI_API_KEY = secrets['OPENAI_API_KEY']
+'''
+
+
+# Load secrets from Streamlit's Secrets Management
+PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
+INDEX_HOST = st.secrets["INDEX_HOST"]
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+
 
 # Fixed list of namespaces
 NAMESPACES = ["FED_SR117", "ECB_GIM_Feb24", "PRA_ss123", "ECB_TRIM2017"]
