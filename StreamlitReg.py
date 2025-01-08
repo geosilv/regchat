@@ -5,6 +5,8 @@ from openai import OpenAI
 import re
 import json
 
+st.set_page_config(page_title="Banking Regulations Chatbot: Model Risk", page_icon="📚", layout="wide")
+
 # Load secrets from a file
 '''
 with open('secrets.json', 'r') as f:
@@ -187,7 +189,7 @@ def get_gpt_response(client, prompt: str) -> str:
         return f"Error generating response: {str(e)}"
 
 def main():
-    st.set_page_config(page_title="Banking Regulations Chatbot: Model Risk", page_icon="📚", layout="wide")
+ #   st.set_page_config(page_title="Banking Regulations Chatbot: Model Risk", page_icon="📚", layout="wide")
     st.markdown(
     """
     <h1 style='font-size:24px; color:black; margin-bottom:0;'>
