@@ -1,0 +1,56 @@
+{
+  "id": "Document_ID",                          // Unique identifier for the document
+  "title": "Document Title",                    // Title of the document
+  "summary": {
+    "full_summary": "A detailed summary here...", // Full preprocessed summary of the document
+    "sections": [                                 // Optional breakdown into sections
+      {
+        "section_title": "Section Title 1",       // Title of the section
+        "text": "Text of the section 1 here..."   // Content of the section
+      },
+      {
+        "section_title": "Section Title 2",
+        "text": "Text of the section 2 here..."
+      }
+    ]
+  },
+  "metadata": {
+    "author": "Author Name",                     // Author of the document
+    "date": "YYYY-MM-DD",                        // Publication or creation date
+    "source_type": "Regulatory Document",        // Type of document (e.g., regulatory, policy)
+    "tags": [                                    // Tags for categorization
+      "MRM",
+      "Governance",
+      "Compliance"
+    ],
+    "url": "https://example.com/document"        // URL for reference or original document
+  }
+}
+
+
+
+---
+
+### **How to Use This Prompt**
+
+1. **Upload the File**:
+   - If using a system like ChatGPT with file upload capabilities, upload the document (e.g., "SS1_23.pdf").
+
+2. **Provide the Prompt**:
+   - Paste the above prompt, and if required, include a short description of the document’s content.
+
+3. **Review the Output**:
+   - The AI will generate the JSON structure based on the document content. Review and modify as needed.
+
+---
+
+### **Example Input for the AI**
+
+**Prompt**:
+```plaintext
+You are an expert in document analysis and JSON formatting. Analyze the uploaded document "SS1_23.pdf" and populate a JSON file with the following structure:
+
+[Include the JSON structure from the prompt]
+
+Uploaded file: Supervisory Statement SS1/23 (content about model risk management, governance, validation principles, and mitigants).
+

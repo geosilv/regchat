@@ -1,0 +1,2 @@
+1. Improve the logic of prompt and incorporate high level summaries of documents
+2. Make search entirely within python
