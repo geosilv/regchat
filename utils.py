@@ -4,60 +4,60 @@ import re
 import Complexity
 import search_utils
 
-def sanitize_json_content(content):
-    """Sanitizes JSON content by handling various types of control characters and encoding issues."""
-    # Replace common problematic characters
-    replacements = {
-        '\x00': '',  # null
-        '\x0A': ' ', # line feed
-        '\x0D': ' ', # carriage return
-        '\x1A': '',  # substitute
-        '\x1E': '',  # record separator
-        '\x1F': '',  # unit separator
-        '\x7F': '',  # delete
-        '\u2028': ' ', # line separator
-        '\u2029': ' ', # paragraph separator
-    }
+# def sanitize_json_content(content):
+#     """Sanitizes JSON content by handling various types of control characters and encoding issues."""
+#     # Replace common problematic characters
+#     replacements = {
+#         '\x00': '',  # null
+#         '\x0A': ' ', # line feed
+#         '\x0D': ' ', # carriage return
+#         '\x1A': '',  # substitute
+#         '\x1E': '',  # record separator
+#         '\x1F': '',  # unit separator
+#         '\x7F': '',  # delete
+#         '\u2028': ' ', # line separator
+#         '\u2029': ' ', # paragraph separator
+#     }
     
-    # First pass: handle known control characters
-    for char, replacement in replacements.items():
-        content = content.replace(char, replacement)
+#     # First pass: handle known control characters
+#     for char, replacement in replacements.items():
+#         content = content.replace(char, replacement)
     
-    # Second pass: remove any remaining control characters
-    content = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', content)
+#     # Second pass: remove any remaining control characters
+#     content = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', content)
     
-    # Third pass: normalize whitespace
-    content = re.sub(r'\s+', ' ', content)
+#     # Third pass: normalize whitespace
+#     content = re.sub(r'\s+', ' ', content)
     
-    return content.strip()
+#     return content.strip()
 
-def load_summaries(directory):
-    """
-    Loads all JSON summaries from a given directory with proper sanitization.
+# def load_summaries(directory):
+#     """
+#     Loads all JSON summaries from a given directory with proper sanitization.
     
-    Args:
-        directory (str): Path to the directory containing JSON files.
+#     Args:
+#         directory (str): Path to the directory containing JSON files.
         
-    Returns:
-        dict: A dictionary mapping document IDs to their summaries
-    """
-    summaries = {}  # Change to dictionary
+#     Returns:
+#         dict: A dictionary mapping document IDs to their summaries
+#     """
+#     summaries = {}  # Change to dictionary
     
-    for filename in os.listdir(directory):
-        if filename.endswith(".json"):
-            try:
-                with open(os.path.join(directory, filename), 'r', encoding='utf-8') as file:
-                    data = json.loads(file.read())
-                    # Use the ID as the key
-                    if 'id' in data:
-                        summaries[data['id']] = data
-                    # Also store using filename without extension
-                    name_key = os.path.splitext(filename)[0]
-                    summaries[name_key] = data
-            except Exception as e:
-                print(f"Error loading {filename}: {e}")
+#     for filename in os.listdir(directory):
+#         if filename.endswith(".json"):
+#             try:
+#                 with open(os.path.join(directory, filename), 'r', encoding='utf-8') as file:
+#                     data = json.loads(file.read())
+#                     # Use the ID as the key
+#                     if 'id' in data:
+#                         summaries[data['id']] = data
+#                     # Also store using filename without extension
+#                     name_key = os.path.splitext(filename)[0]
+#                     summaries[name_key] = data
+#             except Exception as e:
+#                 print(f"Error loading {filename}: {e}")
                 
-    return summaries
+#     return summaries
 
 
 # def load_summaries(summaries_dir):
@@ -288,48 +288,60 @@ def create_synthetic_gpt_prompt(query: str, context: list) -> str:
 
     return prompt
 
-def process_user_query(prompt, model, index, client, summaries_dir="summaries/"):
-    """Process user query with support for multiple document summaries"""
-    # Load summaries
-    summaries = load_summaries(summaries_dir)
+# def process_user_query(prompt, model, index, client, summaries_dir="summaries/"):
+#     """Process user query with support for multiple document summaries"""
+#     # Load summaries
+#     summaries = load_summaries(summaries_dir)
     
-    # Dictionary of document variations to check for
-    doc_identifiers = {
-        "SR117": ["SR117", "SR-11-7", "SR 11-7", "FED_SR117"],
-        "ECB_GIM": ["ECB_GIM", "GIM", "ECB GIM", "ECB_GIM_Feb24"],
-        "SS123": ["SS123", "SS-123", "SS 123", "PRA_ss123"],
-        "TRIM": ["TRIM", "ECB TRIM", "ECB_TRIM2017", "TRIM2017"]
+#     # Dictionary of document variations to check for
+#     doc_identifiers = {
+#         "SR117": ["SR117", "SR-11-7", "SR 11-7", "FED_SR117"],
+#         "ECB_GIM": ["ECB_GIM", "GIM", "ECB GIM", "ECB_GIM_Feb24"],
+#         "SS123": ["SS123", "SS-123", "SS 123", "PRA_ss123"],
+#         "TRIM": ["TRIM", "ECB TRIM", "ECB_TRIM2017", "TRIM2017"]
+#     }
+    
+#     # Check for document references in prompt
+#     prompt_lower = prompt.lower()
+#     enhanced_prompt = prompt
+#     found_documents = []
+    
+#     # Look for all matching documents
+#     for base_id, variations in doc_identifiers.items():
+#         if any(var.lower() in prompt_lower for var in variations):
+#             for var in variations:
+#                 if var in summaries:
+#                     summary = summaries[var]
+#                     if summary and 'summary' in summary:
+#                         print("summary {var} loaded", var)
+#                         found_documents.append(var)
+#                         enhanced_prompt += f"\n\nContext from {var}:\n{summary['summary']['full_summary']}"
+#                     break
+
+#     # Use the enhanced prompt for search
+#     results = search_utils.search_regulations(enhanced_prompt, index, model)
+#     complexity_score = Complexity.calculate_complexity_score(prompt)
+#     print ("prompt = ",prompt )
+
+#     if results:
+#         gpt_prompt = create_synthetic_gpt_prompt(enhanced_prompt, results)
+#         if found_documents:
+#             gpt_prompt += f"\n\nNote: Additional context was included from document summaries: {', '.join(found_documents)}"
+#         gpt_response = get_gpt_response(client, gpt_prompt)
+#         print("gpt_prompt = ", gpt_prompt)
+#         return results, complexity_score, gpt_response
+#     else:
+#         return results, complexity_score, None
+
+def get_friendly_document_name(doc_name: str) -> str:
+    """
+    Convert processed filenames to friendly document names.
+    """
+    document_mapping = {
+        "processed_ECB_GIM_Feb24_processed": "ECB GIM 2024",
+        "processed_ECB_TRIM2017_processed": "ECB TRIM 2017",
+        "processed_PRA_ss123_processed": "PRA SS1/23",
+        "processed_JFSA_2021_processed": "JFSA 2021",
+        "processed_FED_sr1107a1_processed": "FED SR 11-7"
     }
-    
-    # Check for document references in prompt
-    prompt_lower = prompt.lower()
-    enhanced_prompt = prompt
-    found_documents = []
-    
-    # Look for all matching documents
-    for base_id, variations in doc_identifiers.items():
-        if any(var.lower() in prompt_lower for var in variations):
-            for var in variations:
-                if var in summaries:
-                    summary = summaries[var]
-                    if summary and 'summary' in summary:
-                        print("summary {var} loaded", var)
-                        found_documents.append(var)
-                        enhanced_prompt += f"\n\nContext from {var}:\n{summary['summary']['full_summary']}"
-                    break
-
-    # Use the enhanced prompt for search
-    results = search_utils.search_regulations(enhanced_prompt, index, model)
-    complexity_score = Complexity.calculate_complexity_score(prompt)
-    print ("prompt = ",prompt )
-
-    if results:
-        gpt_prompt = create_synthetic_gpt_prompt(enhanced_prompt, results)
-        if found_documents:
-            gpt_prompt += f"\n\nNote: Additional context was included from document summaries: {', '.join(found_documents)}"
-        gpt_response = get_gpt_response(client, gpt_prompt)
-        print("gpt_prompt = ", gpt_prompt)
-        return results, complexity_score, gpt_response
-    else:
-        return results, complexity_score, None
-
+    return document_mapping.get(doc_name, doc_name)

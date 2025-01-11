@@ -49,7 +49,8 @@ def load_secrets():
         return {
             "PINECONE_API_KEY": st.secrets["PINECONE_API_KEY"],
             "INDEX_HOST": st.secrets["INDEX_HOST"],
-            "OPENAI_API_KEY": st.secrets["OPENAI_API_KEY"]
+            "OPENAI_API_KEY": st.secrets["OPENAI_API_KEY"],
+            "INDEX_NAME": st.secrets["INDEX_NAME"]
         }
     except:
         # Fall back to local secrets.json

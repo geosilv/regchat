@@ -6,23 +6,24 @@ import numpy as np
 from typing import List, Dict, Any
 from sentence_transformers import SentenceTransformer
 from pinecone import Pinecone, ServerlessSpec, Index
+from glob import glob
 
 # Configuration
 PINECONE_API_KEY = "pcsk_22reMi_CoW2s5jpVBSzePsuNTNPNbLgVzEb6ZzUynpCpGkECDH2D22NAz4eFdJd94RPmgj"
 ENVIRONMENT = "us-east-1"
-INDEX_NAME = "regulations"
-JSON_FILE_PATH = r"C:\Users\gallo\OneDrive\Desktop\Regulations\extracted_ECB_TRIM2017clean.json"
-INDEX_HOST = "https://regulations-bf89341.svc.aped-4627-b74a.pinecone.io"
+INDEX_NAME = "regulations2"
+INDEX_HOST = "https://regulations2-bf89341.svc.aped-4627-b74a.pinecone.io"
 MODEL_NAME = "all-mpnet-base-v2"
-NAMESPACE = "EECB_TRIM2017"
 TARGET_DIMENSION = 768
 MAX_RETRIES = 3
 RETRY_DELAY = 2
 
+# Directory containing JSON files to process
+JSON_FILES_DIRECTORY = r"C:\Users\gallo\source\VSCode\RegulationsProject\LanchainProcessedDocs\cleaned_documents"
+
 def get_or_create_index(pc: Pinecone, index_name: str) -> None:
     """Get existing index or create a new one if it doesn't exist."""
     try:
-        # First try to describe the index
         try:
             index_info = pc.describe_index(index_name)
             print(f"Found existing index '{index_name}' with dimension {index_info.dimension}")
@@ -31,7 +32,6 @@ def get_or_create_index(pc: Pinecone, index_name: str) -> None:
             if "not found" not in str(e).lower():
                 raise
             
-            # Index doesn't exist, create it
             print(f"Creating new index '{index_name}'...")
             pc.create_index(
                 name=index_name,
@@ -43,7 +43,6 @@ def get_or_create_index(pc: Pinecone, index_name: str) -> None:
                 )
             )
             
-            # Wait for index to be ready
             print("Waiting for index to be ready...")
             while True:
                 try:
@@ -63,16 +62,10 @@ def get_or_create_index(pc: Pinecone, index_name: str) -> None:
 def initialize_pinecone(api_key: str, index_host: str, index_name: str) -> Index:
     """Initialize Pinecone client and return index."""
     try:
-        # Initialize Pinecone
         pc = Pinecone(api_key=api_key)
-        
-        # Ensure index exists
         get_or_create_index(pc, index_name)
-        
-        # Connect to the index
         index = pc.Index(host=index_host)
         
-        # Get current stats
         try:
             stats = index.describe_index_stats()
             print("\nCurrent index statistics:")
@@ -88,14 +81,13 @@ def initialize_pinecone(api_key: str, index_host: str, index_name: str) -> Index
         print(f"Error initializing Pinecone: {e}")
         raise
 
-def generate_unique_id(section_name: str, document_name: str) -> str:
-    """Generate a unique ID incorporating section and document info."""
-    # Remove special characters and spaces, keep alphanumeric
-    clean_section = ''.join(c for c in section_name if c.isalnum())
-    clean_doc = ''.join(c for c in document_name if c.isalnum())
+def generate_unique_id(document_title: str, page_number: int, chunk_index: int) -> str:
+    """Generate a unique ID incorporating document and chunk info."""
+    filename = os.path.basename(document_title)
+    clean_doc = ''.join(c for c in filename if c.isalnum())
     timestamp = int(time.time())
     unique = uuid.uuid4().hex[:6]
-    return f"{clean_doc}_{clean_section}_{timestamp}_{unique}"
+    return f"{clean_doc}_p{page_number}_c{chunk_index}_{timestamp}_{unique}"
 
 def pad_embedding(embedding: List[float], target_dim: int) -> List[float]:
     """Pad embedding to target dimension by repeating values."""
@@ -131,7 +123,6 @@ def verify_vector_upload(index: Index, vector_id: str, namespace: str, max_retri
         try:
             result = index.fetch(ids=[vector_id], namespace=namespace)
             if vector_id in result.get('vectors', {}):
-                # Print metadata to verify it was stored correctly
                 vector_data = result['vectors'][vector_id]
                 print(f"Verified vector {vector_id} with metadata:")
                 print(json.dumps(vector_data.get('metadata', {}), indent=2))
@@ -153,7 +144,6 @@ def upsert_vectors(index: Index, vectors: List[Dict[str, Any]], namespace: str, 
     
     successful_uploads = 0
     
-    # Print first vector's metadata for verification
     print("\nSample vector metadata being uploaded:")
     print(json.dumps(vectors[0]['metadata'], indent=2))
     
@@ -196,51 +186,82 @@ def upsert_vectors(index: Index, vectors: List[Dict[str, Any]], namespace: str, 
     print(f"  Successfully verified uploads: {successful_uploads}")
     print(f"  Expected to add: {len(vectors)}")
 
+def process_json_file(file_path: str, index: Index):
+    """Process a single JSON file and upload its contents to Pinecone."""
+    try:
+        print(f"\nProcessing file: {file_path}")
+        
+        # Extract namespace from filename
+        base_name = os.path.basename(file_path)
+        namespace = base_name.replace('.json', '')
+        
+        # Load JSON data
+        with open(file_path, "r", encoding="utf-8") as f:
+            chunks = json.load(f)
+            
+        # Handle both list and dictionary formats
+        if isinstance(chunks, dict):
+            chunks = [chunks]
+        
+        # Generate embeddings
+        texts = [chunk["text"] for chunk in chunks]
+        embeddings = generate_embeddings(texts)
+        
+        # Prepare vectors with complete metadata
+        vectors = []
+        for chunk, embedding in zip(chunks, embeddings):
+            metadata = chunk["metadata"].copy()
+            
+            # Add new fields if they exist
+            if "section_name" in chunk:
+                metadata["section_name"] = chunk["section_name"]
+            if "page_start" in chunk:
+                metadata["page_start"] = chunk["page_start"]
+            if "keywords" in chunk["metadata"]:
+                metadata["keywords"] = chunk["metadata"]["keywords"]
+                
+            vector = {
+                "id": generate_unique_id(
+                    metadata["document_title"],
+                    metadata["page_number"],
+                    metadata["chunk_index"]
+                ),
+                "values": embedding,
+                "metadata": {
+                    "text": chunk["text"],
+                    **metadata,
+                    "upload_timestamp": int(time.time())
+                }
+            }
+            vectors.append(vector)
+        
+        # Upload vectors
+        upsert_vectors(index, vectors, namespace=namespace, batch_size=5)
+        
+    except Exception as e:
+        print(f"Error processing file {file_path}: {e}")
+        raise
+
 def main():
-    # Initialize Pinecone with index creation
+    """Main function that processes all JSON files in the specified directory."""
+    # Initialize Pinecone
     try:
         index = initialize_pinecone(PINECONE_API_KEY, INDEX_HOST, INDEX_NAME)
     except Exception as e:
         print(f"Failed to initialize Pinecone: {e}")
         return
 
-    # Load JSON data
-    print(f"Loading data from {JSON_FILE_PATH}")
-    with open(JSON_FILE_PATH, "r", encoding="utf-8") as f:
-        sections = json.load(f)
+    # Get list of JSON files in directory
+    json_files = glob(os.path.join(JSON_FILES_DIRECTORY, "*.json"))
+    print(f"\nFound {len(json_files)} JSON files in directory: {JSON_FILES_DIRECTORY}")
     
-    # Generate embeddings
-    texts = [section["text"] for section in sections]
-    embeddings = generate_embeddings(texts)
-    
-    # Prepare vectors with complete metadata
-    vectors = [
-        {
-            "id": generate_unique_id(
-                section["section_name"],
-                section["document_name"]
-            ),
-            "values": embedding,
-            "metadata": {
-                "text": section["text"],
-                "section_name": section["section_name"],
-                "document_name": section["document_name"],
-                "page_start": section["page_start"],
-                "upload_timestamp": int(time.time())
-            }
-        }
-        for section, embedding in zip(sections, embeddings)
-    ]
-    
-    # Print sample vector for verification
-    print("\nSample vector structure:")
-    sample_vector = vectors[0]
-    print(f"ID: {sample_vector['id']}")
-    print("Metadata:")
-    print(json.dumps(sample_vector['metadata'], indent=2))
-    
-    # Upsert vectors
-    upsert_vectors(index, vectors, namespace=NAMESPACE, batch_size=5)
+    # Process each JSON file
+    for file_path in json_files:
+        try:
+            process_json_file(file_path, index)
+        except Exception as e:
+            print(f"Failed to process {file_path}: {e}")
+            continue
 
 if __name__ == "__main__":
     main()
