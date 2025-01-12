@@ -1,0 +1,9 @@
+{
+    "file_name": "processed_FED_sr1107a1_processed.json",
+    "total_records": 69,
+    "average_score": 0.8956521739130435,
+    "median_score": 0.9,
+    "std_dev": 0.13978426929999674,
+    "min_score": 0.2,
+    "max_score": 1
+}

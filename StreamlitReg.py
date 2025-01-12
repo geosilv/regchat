@@ -22,11 +22,11 @@ INDEX_NAME = secrets["INDEX_NAME"]
 OPENAI_API_KEY = secrets["OPENAI_API_KEY"]
 
 NAMESPACES = [
-    "processed_ECB_GIM_Feb24_processed", 
-    "processed_ECB_TRIM2017_processed", 
-    "processed_PRA_ss123_processed", 
-    "processed_FED_sr1107a1_processed",
-    "processed_JFSA_2021_processed"              
+    "ECB_GIM_Feb24", 
+    "ECB_TRIM2017", 
+    "PRA_ss123", 
+    "FED_sr1107a1",
+    "JFSA_2021"              
 ]
 
 # Fourth: Utility Functions
@@ -38,20 +38,20 @@ def get_friendly_document_name(doc_name: str) -> str:
     # Remove .json extension if present
     doc_name = doc_name.replace('.json', '')
     
-    # Add processed_ prefix if not present
-    if not doc_name.startswith('processed_'):
-        doc_name = f'processed_{doc_name}'
+    # # Add processed_ prefix if not present
+    # if not doc_name.startswith('processed_'):
+    #     doc_name = f'processed_{doc_name}'
     
-    # Add _processed suffix if not present
-    if not doc_name.endswith('_processed'):
-        doc_name = f'{doc_name}_processed'
+    # # Add _processed suffix if not present
+    # if not doc_name.endswith('_processed'):
+    #     doc_name = f'{doc_name}_processed'
     
     document_mapping = {
-        "processed_ECB_GIM_Feb24_processed": "ECB GIM 2024",
-        "processed_ECB_TRIM2017_processed": "ECB TRIM 2017",
-        "processed_PRA_ss123_processed": "PRA SS1/23",
-        "processed_JFSA_2021_processed": "JFSA 2021",
-        "processed_FED_sr1107a1_processed": "FED SR 11-7"
+        "ECB_GIM_Feb24": "ECB GIM 2024",
+        "ECB_TRIM2017": "ECB TRIM 2017",
+        "PRA_ss123": "PRA SS1/23",
+        "JFSA_2021": "JFSA 2021",
+        "FED_sr1107a1": "FED SR 11-7"
     }
     return document_mapping.get(doc_name, doc_name)
 
@@ -89,9 +89,11 @@ def create_synthetic_gpt_prompt(query: str, context: list) -> str:
         "3. HIGHLIGHT any differences or complementary views between documents\n"
         "4. CREATE a comprehensive answer that integrates insights from all relevant sources\n"
         "5. ALWAYS cite specific documents and page numbers for each key point\n\n"
+        "6. CHECK IF the question asked makes logical, grammatical, semantic AND contextual sense IF NOT THEN say so and do not reply.\n\n"
         "When citing sources, write citations in running text like this: (ECB GIM 2024, p. 7)\n"
         "Do not put citations at the end of paragraphs or in a separate section.\n\n"
-        "If only one document provides relevant information, explicitly state this and explain "
+        "If you are asked to summarize or be brief or concise or similar, aim for shorter and informative responses\n\n"    
+        "If only one document provides relevant information, explicitly state this and explain\n\n"
         "what aspects other regulations might not cover.\n\n"
     )
     
@@ -119,13 +121,14 @@ def create_synthetic_gpt_prompt(query: str, context: list) -> str:
 
 def get_gpt_response(client, prompt: str) -> str:
     document_mapping = {
-        "processed_ECB_GIM_Feb24_processed": "ECB GIM 2024",
-        "processed_ECB_TRIM2017_processed": "ECB TRIM 2017",
-        "processed_PRA_ss123_processed": "PRA SS1/23",
-        "processed_JFSA_2021_processed": "JFSA 2021",
-        "processed_FED_sr1107a1_processed": "FED SR 11-7"
+        "ECB_GIM_Feb24": "ECB GIM 2024",
+        "ECB_TRIM2017": "ECB TRIM 2017",
+        "PRA_ss123": "PRA SS1/23",
+        "JFSA_2021": "JFSA 2021",
+        "FED_sr1107a1": "FED SR 11-7"
     }
     
+    MAX_TOKENS = 800
     try:
         response = client.chat.completions.create(
             model="gpt-4",
@@ -139,11 +142,14 @@ def get_gpt_response(client, prompt: str) -> str:
                     "documents, compare perspectives, and provide comprehensive answers "
                     "that integrate insights from all relevant sources. Always weave citations "
                     "naturally into your sentences. Never use underscores or 'processed' in document names."
+                    "If the question asked does not make logical or grammatical or semantic sense, say so and do not reply. "
+                    "If you are asked to summarize or be brief or concise, aim for clear and informative responses. "
+                    "Provide answers with the limit of {MAX_TOKENS} tokens."
                 )},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.5,
-            max_tokens=1500
+            temperature=0.7,
+            max_tokens=MAX_TOKENS
         )
 
         raw_response = response.choices[0].message.content
@@ -155,10 +161,10 @@ def get_gpt_response(client, prompt: str) -> str:
         fixed_response = re.sub(r'Page:?\s*(\d+)', r'p. \1', fixed_response)
         fixed_response = re.sub(r'page:?\s*(\d+)', r'p. \1', fixed_response)
         
-        # First pass: Handle processed names in citations
-        for old_name, friendly_name in document_mapping.items():
-            old_pattern = rf'\((?:processed_)?{re.escape(old_name.replace("processed_", "").replace("_processed", ""))}(?:_processed)?(?:\.json)?,\s*p\.\s*(\d+)\)'
-            fixed_response = re.sub(old_pattern, rf'({friendly_name}, p. \1)', fixed_response)
+        # # First pass: Handle processed names in citations
+        # for old_name, friendly_name in document_mapping.items():
+        #     old_pattern = rf'\((?:processed_)?{re.escape(old_name.replace("processed_", "").replace("_processed", ""))}(?:_processed)?(?:\.json)?,\s*p\.\s*(\d+)\)'
+        #     fixed_response = re.sub(old_pattern, rf'({friendly_name}, p. \1)', fixed_response)
         
         # Second pass: Clean up any remaining non-standard citation formats
         fixed_response = re.sub(r'\[([^,]+?),\s*p\.\s*(\d+)\]', r'(\1, p. \2)', fixed_response)
@@ -195,19 +201,19 @@ def setup_sidebar():
     with st.sidebar:
         st.title("Available Documents")
         display_names = {
-            "processed_ECB_GIM_Feb24_processed": "ECB GIM Feb 2024",
-            "processed_ECB_TRIM2017_processed": "ECB TRIM 2017",
-            "processed_PRA_ss123_processed": "PRA SS1/23",
-            "processed_JFSA_2021_processed": "JFSA 2021",
-            "processed_FED_sr1107a1_processed": "FED SR 11-7a1"
+            "ECB_GIM_Feb24": "ECB GIM Feb 2024",
+            "ECB_TRIM2017": "ECB TRIM 2017",
+            "PRA_ss123": "PRA SS1/23",
+            "JFSA_2021": "JFSA 2021",
+            "FED_sr1107a1": "FED SR 11-7a1"
         }
         
         document_links = {
-            "processed_ECB_GIM_Feb24_processed": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides202402_internalmodels.en.pdf",
-            "processed_ECB_TRIM2017_processed": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/trim_guide.en.pdf",
-            "processed_PRA_ss123_processed": "https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2023/ss123.pdf",
-            "processed_JFSA_2021_processed": "https://www.fsa.go.jp/en/news/2021/20210730-1.html",
-            "processed_FED_sr1107a1_processed": "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.pdf"
+            "ECB_GIM_Feb24": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.supervisory_guides202402_internalmodels.en.pdf",
+            "ECB_TRIM2017": "https://www.bankingsupervision.europa.eu/ecb/pub/pdf/trim_guide.en.pdf",
+            "PRA_ss123": "https://www.bankofengland.co.uk/-/media/boe/files/prudential-regulation/supervisory-statement/2023/ss123.pdf",
+            "JFSA_2021": "https://www.fsa.go.jp/en/news/2021/20210730-1.html",
+            "FED_sr1107a1": "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.pdf"
         }
         
         for ns in NAMESPACES:
@@ -257,7 +263,7 @@ def display_references_by_complexity(results, complexity_score):
         processed_results.append(new_match)
         
         # Debug log
-        print(f"Converting: {doc_title} -> {friendly_name}")
+        #print(f"Converting: {doc_title} -> {friendly_name}")
     
     if complexity_score >= 3:
         # Group by friendly document name
@@ -278,7 +284,7 @@ def display_references_by_complexity(results, complexity_score):
             friendly_name = match.metadata['friendly_name']
             
             # Debug log
-            print(f"Displaying reference {i}: {friendly_name}")
+            #print(f"Displaying reference {i}: {friendly_name}")
             
             with st.expander(f"{friendly_name} - Reference {i} (Relevance: {match.score:.2f})", expanded=False):
                 _display_reference_details(match)
@@ -289,7 +295,7 @@ def _display_reference_details(match):
     friendly_name = match.metadata['friendly_name']
     
     # Debug log
-    print(f"Displaying details for: {friendly_name}")
+    #print(f"Displaying details for: {friendly_name}")
     
     st.markdown(f"**Document:** {friendly_name}")
     
@@ -309,24 +315,7 @@ def _display_reference_details(match):
         st.markdown("**Relevant Text:**")
         st.markdown(f"> {text}")
 
-# Test that the mapping works
-def test_document_mapping():
-    """Test function to verify document name conversion"""
-    test_names = [
-        "processed_ECB_GIM_Feb24_processed",
-        "processed_ECB_TRIM2017_processed",
-        "processed_PRA_ss123_processed",
-        "processed_JFSA_2021_processed",
-        "processed_FED_sr1107a1_processed"
-    ]
-    
-    print("\nTesting document name conversion:")
-    for name in test_names:
-        friendly = get_friendly_document_name(name)
-        print(f"{name} -> {friendly}")
 
-# Run the test when module loads
-#test_document_mapping()
 
 def process_user_query(prompt, model, index, client):
     results = search_regulations(prompt, index, model)

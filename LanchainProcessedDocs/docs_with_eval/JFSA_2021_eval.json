@@ -1,0 +1,980 @@
+[
+    {
+        "section_name": "Contents",
+        "page_start": 2,
+        "text": "Scope and Application ............................................................................................................................. 3 1) Scope of a Financial Institution ............................................................................................................ 3 2) Scope of a “Model” .............................................................................................................................. 3 3) Application ........................................................................................................................................... 4 III.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 2,
+            "chunk_index": 2,
+            "token_count": 50,
+            "processing_timestamp": "2025-01-10T23:04:10.596857",
+            "summary": "The text discusses the scope and application of financial institutions and models. It outlines the scope of a financial institution and a \"model,\" and then delves into their application.",
+            "keywords": [
+                "Scope",
+                "Application",
+                "Financial Institution",
+                "Model",
+                "III."
+            ]
+        },
+        "usefulness_score": 0.2
+    },
+    {
+        "section_name": "Contents",
+        "page_start": 2,
+        "text": "Key Concepts of Model Risk Management .............................................................................................. 5 1) The Three Lines of Defense .................................................................................................................. 5 2) Model Life Cycle ................................................................................................................................... 6 3) Risk-Based Approach ............................................................................................................................ 6 V.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 2,
+            "chunk_index": 4,
+            "token_count": 50,
+            "processing_timestamp": "2025-01-10T23:04:12.430505",
+            "summary": "The text discusses key concepts of model risk management, including the Three Lines of Defense, Model Life Cycle, and Risk-Based Approach.",
+            "keywords": [
+                "The Three Lines of Defense",
+                "Model Life Cycle",
+                "Risk-Based Approach"
+            ]
+        },
+        "usefulness_score": 0.5
+    },
+    {
+        "section_name": "Contents",
+        "page_start": 2,
+        "text": "Principles for Model Risk Management ................................................................................................... 7 Principle 1 – Governance ......................................................................................................................... 7 Principle 2 – Model Identification, Model Inventory, and Model Risk Rating ......................................... 8 Principle 3 – Model Development ........................................................................................................... 9 Principle 4 – Model Approval ................................................................................................................... 9 Principle 5 – Ongoing Monitoring .......................................................................................................... 10 Principle 6 – Model Validation ............................................................................................................... 10 Principle 7 – Vendor Products and Use of External Resources .............................................................. 12 Principle 8 – Internal Audit .................................................................................................................... 12 2",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 2,
+            "chunk_index": 5,
+            "token_count": 120,
+            "processing_timestamp": "2025-01-10T23:04:13.439825",
+            "summary": "The text outlines eight principles for Model Risk Management, covering aspects such as governance, model identification, development, approval, monitoring, validation, use of external resources, and internal audit.",
+            "keywords": [
+                "Governance",
+                "Model Identification",
+                "Model Inventory",
+                "Model Risk Rating",
+                "Model Development",
+                "Model Approval",
+                "Ongoing Monitoring",
+                "Model Validation",
+                "Vendor Products",
+                "External Resources",
+                "Internal Audit"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Objective",
+        "page_start": 3,
+        "text": "Financial institutions have been extending the use of models to support their decision making, driven by technological advances and increasing broadness and complexity in their activities. By presenting simplified representations of reality, models provide information that aid decision making in wide-ranging activities from business and risk management to compliance. A model, however, intrinsically entails a great deal of simplifications and assumptions. Modelling involves different possible choices of methodologies and assumptions, which could significantly alter the output of the model. Models may even contain fundamental errors or be used inappropriately, and changes in the environment may turn a once appropriate model into an obsolete one, resulting in the misuse of the model. All of these give rise to the risk of inaccurate or misinformed decision making, consequently causing a potential material damage on a financial institution's earnings, financial positions, or reputation.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 3,
+            "chunk_index": 6,
+            "token_count": 167,
+            "processing_timestamp": "2025-01-10T23:04:14.819363",
+            "summary": "Financial institutions are increasingly relying on models to make decisions due to technological advancements and the complexity of their activities. Models provide valuable information for decision-making but come with simplifications and assumptions that can lead to errors. Different methodologies and assumptions can significantly impact model outputs, potentially leading to inaccurate decisions and negative consequences for financial institutions.",
+            "keywords": [
+                "Models",
+                "decision making",
+                "financial institutions",
+                "assumptions",
+                "risk management",
+                "inaccuracies",
+                "misuse"
+            ]
+        },
+        "usefulness_score": 0.9
+    },
+    {
+        "section_name": "Objective",
+        "page_start": 3,
+        "text": "As well as bringing about a potential merit in improving decision making, models present such risk (i.e., model risk) to financial institutions. Adverse consequences arising from a model could have far-reaching impacts beyond the financial institution using the model; they may even result in system-wide financial instability, for example, where the use of improper models could cause market-wide underestimation and accumulation of risk, ultimately followed by a sudden market reversal. If problems arising from models were to affect regulatory reporting or inputs to supervisory decisions, the integrity of financial regulation and supervision could be seriously undermined. This is particularly relevant for capital and other regulations where financial institutions’ internal models are used for determining their own requirements. The need for adequate controls on such internal models has long been recognized in the regulatory community: international standard setting bodies, such as the Basel Committee on Banking Supervision, and national supervisory authorities, including the Financial Services Agency (FSA), have been requiring the financial institutions to effectively manage the risk arising from the internal models in question, as a precondition for the use of the model for regulatory purposes.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 3,
+            "chunk_index": 7,
+            "token_count": 219,
+            "processing_timestamp": "2025-01-10T23:04:16.097649",
+            "summary": "Models used by financial institutions for decision-making can have both benefits and risks. While models can improve decision-making, they also pose a risk known as model risk. If a model is flawed, it can lead to severe consequences not only for the institution using it but also for the entire financial system. Proper controls and oversight are necessary to manage the risks associated with internal models, as recognized by regulatory bodies like the Basel Committee on Banking Supervision and national supervisory authorities.",
+            "keywords": [
+                "model risk",
+                "financial institutions",
+                "decision making",
+                "regulatory reporting",
+                "internal models",
+                "financial regulation"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Objective",
+        "page_start": 3,
+        "text": "However, given the extent to which models pose the risk of wide-ranging adverse consequences, financial institutions need to manage the risks stemming from all sorts of the models, regardless of whether the models are used for regulatory purposes. The need for comprehensive model risk management is gaining greater significance in light of the pervasive use of models in almost every aspect of financial institutions’ activities. While models for previous decades have been extensively used in pricing/valuation of financial products and risk measurement (e.g., credit, market, and operational risk), more recently models have been finding their ways in broader areas. To name a few, provisioning, anti-money laundering (AML), fraud detection, and algorithmic trading are becoming increasingly model-based. Those models are often harnessing the technological advancements, such as increasing computational power and development in methodologies of machine learning and artificial intelligence. 3 The elevated uncertainty surrounding financial institutions has also heightened their need to manage model risk.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 3,
+            "chunk_index": 8,
+            "token_count": 185,
+            "processing_timestamp": "2025-01-10T23:04:17.811261",
+            "summary": "Financial institutions must manage the risks associated with various models, regardless of their purpose, due to the potential for adverse consequences. The increasing use of models in different areas within financial institutions, such as pricing, risk measurement, and new applications like anti-money laundering and algorithmic trading, necessitates comprehensive model risk management. This is particularly crucial given advancements in technology like machine learning and artificial intelligence, which have expanded the scope of model applications. The heightened uncertainty in financial institutions further emphasizes the importance of managing model risk",
+            "keywords": [
+                "models",
+                "model risk management",
+                "financial institutions",
+                "regulatory purposes",
+                "machine learning",
+                "artificial intelligence"
+            ]
+        },
+        "usefulness_score": 0.9
+    },
+    {
+        "section_name": "Objective",
+        "page_start": 3,
+        "text": "Many of the models are designed to predict the future based on the past or estimate an unobservable object from what has been observed. The Covid-19 pandemic and the subsequent economic and market dislocation have reminded us of the fact that observed patterns in the past would not necessarily hold in the future, highlighting the nature of the risk intrinsic to models. Effective and proactive model risk management is the key to exploiting the opportunities provided by the technological advancements in the highly uncertain environment. This document is intended to clarify the FSA’s approach to model risk management, thereby catalyzing further development of the model risk management practices in the industry. The FSA is articulating its expectation as a list of principles rather than prescriptive rules, acknowledging the evolving nature of model risk management practice, while being mindful of the fact there would be no one-size-fits-all approach.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 3,
+            "chunk_index": 9,
+            "token_count": 171,
+            "processing_timestamp": "2025-01-10T23:04:19.588454",
+            "summary": "The text discusses the importance of model risk management in predicting future outcomes and dealing with uncertainties, especially in light of events like the Covid-19 pandemic. It emphasizes the need for effective management to leverage technological advancements and provides principles rather than strict rules to guide industry practices.",
+            "keywords": [
+                "predictive models",
+                "future estimation",
+                "Covid-19 pandemic",
+                "model risk management",
+                "technological advancements",
+                "FSA approach",
+                "evolving practices"
+            ]
+        },
+        "usefulness_score": 0.5
+    },
+    {
+        "section_name": "Scope of a Financial Institution",
+        "page_start": 4,
+        "text": "This document is relevant to a financial institution with systemic importance, namely:  G-SIBs (Global Systemically Important Banks) headquartered in Japan;  D-SIBs (Domestic Systemically Important Banks) designated by the FSA; and  Foreign G-SIBs’ subsidiaries in Japan that have obtained approval from the FSA on the use of a model for regulatory purposes. For the purpose of this document, these financial institutions are collectively referred to as “firms.” Where warranted, the FSA may expand the scope of the application in the future.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 4,
+            "chunk_index": 10,
+            "token_count": 117,
+            "processing_timestamp": "2025-01-10T23:04:21.067066",
+            "summary": "This document pertains to significant financial institutions in Japan, including G-SIBs, D-SIBs, and foreign G-SIB subsidiaries approved by the FSA for using a model for regulatory purposes. These institutions are collectively referred to as \"firms,\" and the FSA may extend the application scope in the future.",
+            "keywords": [
+                "G-SIBs",
+                "D-SIBs",
+                "FSA",
+                "financial institution",
+                "Japan",
+                "regulatory purposes"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Scope of a “Model”",
+        "page_start": 4,
+        "text": "Model risk management described in this document covers a broad range of models, without limiting its scope to particular model categories. For example, the scope of a model could include, but is not limited to, models used for pricing, risk quantification (credit risk, market risk, etc.), AML, and market surveillance. This document is based on the view that risk should be managed for all sorts of models, as long as the models present risk. It should also be noted that this document is not for the purpose of providing guidance on the management of a particular model, but for setting out a general framework to comprehensively manage the risk arising from any kind of models. 4",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 4,
+            "chunk_index": 11,
+            "token_count": 136,
+            "processing_timestamp": "2025-01-10T23:04:22.702196",
+            "summary": "This document outlines model risk management, which encompasses a wide range of models used for various purposes such as pricing, risk quantification, AML, and market surveillance. The focus is on managing risk for all types of models, rather than specific categories, and provides a general framework for comprehensive risk management across different models.",
+            "keywords": [
+                "Model risk management",
+                "models",
+                "broad range",
+                "risk quantification",
+                "AML",
+                "market surveillance"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Application",
+        "page_start": 5,
+        "text": "In building and enhancing a model risk management framework, firms should establish appropriate prioritization. The build-up of a comprehensive model risk management framework requires substantial time and effort. Accordingly, firms may take roll-out approaches, such as starting from models that potentially present material risk or from areas of higher priorities in terms of effectiveness, followed by an expansion of the coverage. When adopting a roll-out approach, firms are expected to do so with an appropriate prioritization based on the potential risk of the model and their tolerance to model risk. The FSA’s supervision and monitoring of model risk management focuses more on the functioning of the model risk management framework as a whole, rather than checking compliance with each element of the principles in isolation. Firms may customize the practical application of the principles in a manner consistent with the risk profile, the extent of the model use, the complexity of the models used, and the overall risk management framework of the firm.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 5,
+            "chunk_index": 12,
+            "token_count": 186,
+            "processing_timestamp": "2025-01-10T23:04:24.288190",
+            "summary": "Firms should prioritize the establishment of a model risk management framework by starting with models that pose significant risks or are of higher priority. The framework should be tailored to the firm's risk tolerance and the complexity of models used. The FSA focuses on the overall functioning of the framework rather than individual compliance elements.",
+            "keywords": [
+                "prioritization",
+                "model risk management framework",
+                "roll-out approach",
+                "potential risk",
+                "FSA supervision",
+                "risk profile",
+                "model use",
+                "overall risk management framework"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Application",
+        "page_start": 5,
+        "text": "Firms are expected not only to build a framework but also continue to ensure its effectiveness through engagements of the board of directors and the senior management.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 5,
+            "chunk_index": 13,
+            "token_count": 29,
+            "processing_timestamp": "2025-01-10T23:04:25.728590",
+            "summary": "Firms are advised to establish a framework and maintain its effectiveness by involving the board of directors and senior management.",
+            "keywords": [
+                "Firms",
+                "framework",
+                "effectiveness",
+                "engagements",
+                "board of directors",
+                "senior management"
+            ]
+        },
+        "usefulness_score": 0.6
+    },
+    {
+        "section_name": "Model",
+        "page_start": 5,
+        "text": "The term “model” refers to a quantitative process or a system of quantitative processes that apply theories and assumptions to process data into an output(s) such as estimates, forecasts, scores or classification. Models include a quantitative process whose inputs or outputs are wholly or partially qualitative or whose inputs are based on expert judgements.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 5,
+            "chunk_index": 15,
+            "token_count": 63,
+            "processing_timestamp": "2025-01-10T23:04:27.590497",
+            "summary": "A model is a quantitative process that uses theories and assumptions to process data into estimates, forecasts, scores, or classifications. It can incorporate qualitative inputs or expert judgments in its calculations.",
+            "keywords": [
+                "model",
+                "quantitative process",
+                "theories",
+                "assumptions",
+                "data",
+                "estimates",
+                "forecasts"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model risk",
+        "page_start": 5,
+        "text": "The term “model risk” refers to the potential for adverse consequences resulting from misinformed decision making based on inappropriate or misused models. Model risk could result in deterioration in the prudential position, non-compliance with laws and regulations, or damages to the firm's franchise. Generally, model risk occurs because of: (1) inaccurate output resulting from fundamental errors of a model when viewed against its intended use; or (2) inappropriate use of a model, which includes the use of the model outside its intended use or beyond the model’s limitation. Uncertainty is a key characteristic of models. Whereas modelling involves various choices of methodologies and assumptions, the output of a model is highly sensitive to the choices made (i.e., uncertainty from modelling choices).",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 5,
+            "chunk_index": 16,
+            "token_count": 152,
+            "processing_timestamp": "2025-01-10T23:04:28.583410",
+            "summary": "\"Model risk\" refers to the potential negative outcomes that can arise from using inaccurate or misused models for decision-making, leading to financial, legal, or reputational harm for a firm. This risk can stem from errors in the model itself or from using the model in ways it was not designed for. Models are inherently uncertain due to the choices made during their creation, which can greatly impact their output.",
+            "keywords": [
+                "model risk",
+                "adverse consequences",
+                "misinformed decision making",
+                "inaccurate output",
+                "inappropriate use",
+                "uncertainty",
+                "methodologies and assumptions"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model risk",
+        "page_start": 5,
+        "text": "Furthermore, the output of a model is an estimate of something 5 not directly observable, such as a forecast and parameter estimate, the nature of which inevitably entails uncertainty (i.e., uncertainty from the nature of an output). These uncertainties bring about the possibilities of erroneous decision making, thereby giving rise to model risk.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 5,
+            "chunk_index": 17,
+            "token_count": 63,
+            "processing_timestamp": "2025-01-10T23:04:30.083336",
+            "summary": "The text explains that model output, such as forecasts and parameter estimates, is uncertain due to factors beyond direct observation. This uncertainty can lead to errors in decision-making, known as model risk.",
+            "keywords": [
+                "output",
+                "model",
+                "estimate",
+                "uncertainty",
+                "forecast",
+                "parameter",
+                "model risk"
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "The Three Lines of Defense",
+        "page_start": 6,
+        "text": "A key to sound model risk management is to establish a framework to ensure effective review and challenge. This should be grounded on the risk culture that welcomes challenge, transparency of and healthy skepticism toward models, and efforts not to let models be “black boxes.” As in other risk management, different roles of model risk management can be classified into the Three Lines of Defense (the Three Lines Model) as the fundamental framework for ensuring an effective review and challenge. In a model risk management framework, the Three Lines of Defense could typically take the following forms:  The first line of defense (“1LoD”) consists of units or individuals who are responsible for the ownership of models or have a direct stake in model development or usage (e.g., model owners, model developers, and model users).  The second line of defense (“2LoD”) consists of units or individuals that control the model risk via review and challenge to the 1LoD.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 6,
+            "chunk_index": 18,
+            "token_count": 190,
+            "processing_timestamp": "2025-01-10T23:04:31.270789",
+            "summary": "Establishing a framework for effective review and challenge is crucial in model risk management. This framework should be based on a risk culture that encourages transparency, skepticism, and avoiding \"black box\" models. The Three Lines of Defense model is a fundamental framework for ensuring effective review and challenge in model risk management, with the first line of defense being responsible for model ownership and development, and the second line of defense controlling model risk through review and challenge.",
+            "keywords": [
+                "framework",
+                "model risk management",
+                "Three Lines of Defense",
+                "1LoD",
+                "2LoD",
+                "challenge",
+                "transparency"
+            ]
+        },
+        "usefulness_score": 0.9
+    },
+    {
+        "section_name": "The Three Lines of Defense",
+        "page_start": 6,
+        "text": "Their roles include, but are not limited to, the maintenance of the model risk management framework, the independent oversight of overall model risk and compliance with the firm’s policies, and independent validation of models.  The third line of defense (“3LoD”) consists of internal audit functions that assess the overall effectiveness of the model risk management framework of the firm. In presenting the principles for model risk management, this document puts an emphasis on the Three Lines of Defense as a way to promote effective review and challenge. Firms have various ways to design their organizational architecture in terms of the Three Lines of Defense and assign roles and responsibilities to each of the lines. There may also be cases where a complete separation of defense lines is not practicable. Regardless of the model risk management framework that firms adopt, they should consider how to ensure that an effective review and challenge takes place in their framework. 6",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 6,
+            "chunk_index": 19,
+            "token_count": 179,
+            "processing_timestamp": "2025-01-10T23:04:32.763189",
+            "summary": "The text discusses the Three Lines of Defense model for model risk management within firms, emphasizing the roles and responsibilities of each line. It highlights the importance of effective review and challenge in the model risk management framework, regardless of how firms choose to structure their organizational architecture.",
+            "keywords": [
+                "maintenance",
+                "model risk management framework",
+                "independent oversight",
+                "compliance",
+                "validation",
+                "Three Lines of Defense",
+                "organizational architecture"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Life Cycle",
+        "page_start": 7,
+        "text": "Effective review and challenge should be ensured in every step of a model life cycle , a process along which models evolve through the passage of time – from identification of models to risk rating, development, use, change, and exit. For the purpose of illustration, this may take the following steps:  A firm defines and identifies “models” – the scope of model risk management. Models are recorded in a comprehensive “model inventory,” a set of information on all models the firm has identified.  Each model is assessed for its risk and assigned a risk rating. Model risk ratings form the basis of the risk-based approach to model risk management and the key determinant of the level of controls for individual models (e.g., rigor and frequency of validation).  In the development process, comprehensive model documents are developed.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 7,
+            "chunk_index": 20,
+            "token_count": 163,
+            "processing_timestamp": "2025-01-10T23:04:34.245959",
+            "summary": "Effective review and challenge are essential throughout the entire life cycle of a model, from identification to risk rating, development, use, change, and exit. This involves steps such as defining models, creating a model inventory, assessing risk ratings, and developing comprehensive model documents.",
+            "keywords": [
+                "Effective review",
+                "challenge",
+                "model life cycle",
+                "risk rating",
+                "model inventory",
+                "risk-based approach",
+                "model documents."
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "Model Life Cycle",
+        "page_start": 7,
+        "text": "This is to ensure that methodologies, assumptions, and limitations of the model are sufficiently transparent to stakeholders.  Prior to their official use, models are tested by the 1LoD and independently validated and approved by the 2LoD.  After a model goes into use, the model undergoes ongoing monitoring by the 1LoD and revalidation by the 2LoD. These are carried out to evaluate whether the model is actually performing as intended. The 2LoD has the authority to restrict or reject the use of the model when material deficiencies are identified.  When material changes are made to a model, additional validation is carried out on the model as needed.  The 2LoD assesses the overall model risk of the firm. The results of model risk assessments are reported to the board of directors.  The 3LoD, the internal audit function, assesses the overall effectiveness of the model risk management framework of the firm.  All of the processes above are articulated in policies and procedures, and outputs are documented at each step.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 7,
+            "chunk_index": 21,
+            "token_count": 221,
+            "processing_timestamp": "2025-01-10T23:04:35.614115",
+            "summary": "The text outlines the process of model validation and risk management within a firm, including testing, validation, ongoing monitoring, revalidation, and oversight by different lines of defense. The 2LoD plays a key role in assessing model risk and reporting to the board of directors, while the 3LoD evaluates the overall effectiveness of the model risk management framework. Processes are documented in policies and procedures at each step.",
+            "keywords": [
+                "methodologies",
+                "assumptions",
+                "limitations",
+                "validation",
+                "monitoring",
+                "model risk",
+                "policies and procedures"
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "Risk-Based Approach",
+        "page_start": 7,
+        "text": "The risk-based approach is essential for effective model risk management. For the purpose of this document, the risk-based approach refers to assessing the risk of models, managing and mitigating the risk informed by the assessment. Where firms identify high risk for certain models, they should appropriately address and mitigate the risk as needed. If a model risk is identified as low, they may take actions accordingly. This will enable firms to efficiently allocate resources and effectively mitigate the model risk. The risk-based approach is not only 7 about individual models. Firms should also take into account the risk of models in the aggregate (e.g., interdependence of different models) in their model risk management and address the risk appropriately. The risk-based approach should be aligned with the firm’s tolerance for model risk.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 7,
+            "chunk_index": 22,
+            "token_count": 156,
+            "processing_timestamp": "2025-01-10T23:04:37.098794",
+            "summary": "The text emphasizes the importance of a risk-based approach for effective model risk management. This approach involves assessing, managing, and mitigating risks associated with models based on their level of risk. Firms should address high-risk models appropriately and allocate resources efficiently. It is also important to consider the aggregate risk of models and align the approach with the firm's tolerance for model risk.",
+            "keywords": [
+                "risk-based approach",
+                "model risk management",
+                "assessing risk",
+                "mitigating risk",
+                "resource allocation",
+                "aggregate risk",
+                "tolerance for model risk"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Risk-Based Approach",
+        "page_start": 7,
+        "text": "Firms should have a thorough understanding of their own model risk and mitigate the risk effectively to an acceptable level.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 7,
+            "chunk_index": 23,
+            "token_count": 22,
+            "processing_timestamp": "2025-01-10T23:04:38.668296",
+            "summary": "Firms need to understand and manage their model risk effectively to an acceptable level.",
+            "keywords": [
+                "model risk",
+                "firms",
+                "understanding",
+                "mitigate",
+                "acceptable level"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Board of Directors and Senior Management Responsibilities",
+        "page_start": 8,
+        "text": "The board of directors and senior management should establish a robust framework of comprehensive model risk management, as part of the firm’s overall risk management framework. The board of directors may delegate its responsibilities to execute and maintain a model risk management framework to senior management or relevant committees. In the same manner as for other risk stripes, the overall model risk and compliance with the policies should be periodically reported to the board of directors.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 8,
+            "chunk_index": 25,
+            "token_count": 82,
+            "processing_timestamp": "2025-01-10T23:04:43.533471",
+            "summary": "The board of directors and senior management should create a strong model risk management framework within the firm's overall risk management structure. Responsibilities can be delegated to senior management or committees, and regular reports on model risk and compliance should be provided to the board of directors.",
+            "keywords": [
+                "board of directors",
+                "senior management",
+                "model risk management",
+                "framework",
+                "compliance",
+                "policies",
+                "reporting"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Risk Management Framework",
+        "page_start": 8,
+        "text": "The model risk management framework should be commensurate with the firm’s characteristics, risk profile, nature of model risk, and tolerance for model risk. It should also be on a group-wide basis and an appropriate level of consistency should be sought across entities, regions and jurisdictions. The model risk management framework should also be built upon due consideration on sound industry practice and lessons learned from incidents of model risk management failure inside or outside the firm.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 8,
+            "chunk_index": 26,
+            "token_count": 87,
+            "processing_timestamp": "2025-01-10T23:04:44.901880",
+            "summary": "The model risk management framework should be tailored to the firm's characteristics, risk profile, and tolerance for model risk. It should be consistent across entities and regions, based on industry best practices and lessons learned from past failures.",
+            "keywords": [
+                "model risk management framework",
+                "firm's characteristics",
+                "risk profile",
+                "nature of model risk",
+                "tolerance for model risk",
+                "group-wide basis",
+                "consistency across entities",
+                "regions",
+                "jurisdictions",
+                "industry practice",
+                "model risk management failure"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Policies and Procedures",
+        "page_start": 8,
+        "text": "Firms should set the policies and procedures to formalize the model risk management framework and activities. Policies and procedures should cover all aspects of model risk management, including model definition, roles and responsibilities, model inventory, model development, implementation, and model validation. 8 Firms should also document the results produced by each process in the model risk management activities. While the required level of documentation depends on the purpose of the document, they need to ensure that documentation is sufficiently detailed and granular in light of the purpose so that the necessary information is clearly communicated to the stakeholders.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 8,
+            "chunk_index": 27,
+            "token_count": 114,
+            "processing_timestamp": "2025-01-10T23:04:46.183956",
+            "summary": "Firms should establish policies and procedures to formalize their model risk management framework, covering all aspects such as model definition, roles, inventory, development, implementation, and validation. Documentation of processes and results should be detailed and tailored to effectively communicate information to stakeholders.",
+            "keywords": [
+                "policies",
+                "procedures",
+                "model risk management",
+                "model definition",
+                "roles and responsibilities",
+                "documentation",
+                "stakeholders"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Roles and Responsibilities",
+        "page_start": 9,
+        "text": "Firms should clearly articulate the roles and responsibilities of relevant stakeholders in model risk management. Whereas the roles and responsibilities vary depending on the model risk management framework of the firm, these should include: (i) ownership of models, and (ii) control of model risk by independent parties: (i) For each model, a firm should designate a “model owner,” a unit or an individual who is accountable for the use and performance of the model as part of the 1LoD. (ii) The risk should be controlled by a “model risk management function(s),” the 2LoD functions responsible for the maintenance of the model risk management framework and the independent oversight of overall model risk and compliance with the firm’s policies.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 9,
+            "chunk_index": 28,
+            "token_count": 148,
+            "processing_timestamp": "2025-01-10T23:04:47.379829",
+            "summary": "Firms should clearly define the roles and responsibilities of stakeholders in model risk management, including a designated \"model owner\" for each model and a \"model risk management function\" responsible for oversight and compliance.",
+            "keywords": [
+                "roles and responsibilities",
+                "stakeholders",
+                "model risk management",
+                "model owner",
+                "model risk management function",
+                "1LoD",
+                "2LoD"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Identification",
+        "page_start": 9,
+        "text": "Based on the definition set out in their model risk management framework, firms should identify “models” – the scope of model risk management. Typically, the 1LoD should be responsible for identification of models and the 2LoD should be responsible for assessment of a model and non- model.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 9,
+            "chunk_index": 29,
+            "token_count": 60,
+            "processing_timestamp": "2025-01-10T23:04:48.749047",
+            "summary": "Firms should identify models within their model risk management framework, with the 1st line of defense responsible for identification and the 2nd line of defense responsible for assessing models and non-models.",
+            "keywords": [
+                "model risk management framework",
+                "firms",
+                "models",
+                "1LoD",
+                "2LoD",
+                "assessment",
+                "non-model"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Inventory",
+        "page_start": 9,
+        "text": "Firms should record information for models used, under development, or recently ceased to be used in a model inventory. The model inventory should be sufficiently comprehensive and should contain all the information necessary to support the model risk management activities of the firm. While each line of business, entity, and department may maintain its own inventory, firms should maintain a firm-wide inventory and the 2LoD is responsible for the firm-wide inventory management.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 9,
+            "chunk_index": 30,
+            "token_count": 86,
+            "processing_timestamp": "2025-01-10T23:04:50.108961",
+            "summary": "Firms should maintain a comprehensive model inventory that includes information on all models used, under development, or recently ceased. The firm-wide inventory should support model risk management activities, with responsibility typically falling to the second line of defense (2LoD).",
+            "keywords": [
+                "model inventory",
+                "information recording",
+                "model risk management",
+                "firm-wide inventory",
+                "2LoD"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Risk Rating",
+        "page_start": 9,
+        "text": "Each model in the inventory should be assessed for its risk and assigned a risk rating. Risk ratings form the basis of the risk-based approach to model risk management and the key determinant of the level of controls for each of the models (e.g., rigor and frequency of validation). Whereas the 9 approach to risk ratings depends on the firm, the risk assessment of a model may take into account factors such as materiality, complexity, and usage of the model.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 9,
+            "chunk_index": 31,
+            "token_count": 92,
+            "processing_timestamp": "2025-01-10T23:04:51.278498",
+            "summary": "Models in an inventory should be evaluated and given a risk rating, which determines the level of controls needed for each model. Factors like materiality, complexity, and usage are considered in assessing the risk of a model. The risk rating guides the approach to model risk management, including the level of validation required.",
+            "keywords": [
+                "risk assessment",
+                "risk rating",
+                "model risk management",
+                "controls",
+                "validation",
+                "materiality",
+                "complexity"
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "Model Development",
+        "page_start": 10,
+        "text": "Firms should have a model development process in place to ensure that a model is appropriate for the intended use, in terms of its conceptual soundness, and data quality and suitability for the model.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 10,
+            "chunk_index": 32,
+            "token_count": 39,
+            "processing_timestamp": "2025-01-10T23:04:52.429987",
+            "summary": "Firms need a model development process to ensure that a model is suitable for its intended use, considering factors like conceptual soundness and data quality.",
+            "keywords": [
+                "model development process",
+                "firms",
+                "appropriate",
+                "conceptual soundness",
+                "data quality",
+                "suitability"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Document",
+        "page_start": 10,
+        "text": "In the model development process, the firms should develop a comprehensive model document. The methodologies, assumptions, limitations, and weaknesses underlying the model should be well documented so that each mechanism and feature of the model is transparent to the stakeholders. Model document should be sufficiently detailed so that independent parties with the relevant expertise (e.g., model validators) can understand how the model operates.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 10,
+            "chunk_index": 33,
+            "token_count": 74,
+            "processing_timestamp": "2025-01-10T23:04:53.631564",
+            "summary": "Firms developing models should create a detailed model document that clearly outlines the methodologies, assumptions, limitations, and weaknesses of the model to ensure transparency for stakeholders. The document should be comprehensive enough for independent parties, such as model validators, to understand how the model functions.",
+            "keywords": [
+                "model development process",
+                "comprehensive model document",
+                "methodologies",
+                "assumptions",
+                "limitations",
+                "weaknesses",
+                "model validators"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Testing",
+        "page_start": 10,
+        "text": "In the model development process, the 1LoD should carry out model testing before the official use of a model. Model testing should evaluate various components and the overall functioning of the model and assess potential limitations to determine whether the model is performing as intended. Results of model testing should also be appropriately documented.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 10,
+            "chunk_index": 34,
+            "token_count": 61,
+            "processing_timestamp": "2025-01-10T23:04:55.223032",
+            "summary": "Before using a model, the first line of defense (1LoD) should conduct thorough testing to assess its components, overall performance, and limitations. This evaluation ensures that the model functions as intended and any issues are documented.",
+            "keywords": [
+                "1LoD",
+                "model testing",
+                "components",
+                "overall functioning",
+                "limitations",
+                "documentation"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Approval",
+        "page_start": 10,
+        "text": "Prior to its official use and material changes of a model, the model should be subject to validation and internal approval by the 2LoD. Where a model undergoes revalidation, the model should be internally approved for continued use. A model approver should have the authority to grant a conditional approval (e.g., an approval with restriction on the use of the model) or reject the use of the model. 10",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 10,
+            "chunk_index": 35,
+            "token_count": 85,
+            "processing_timestamp": "2025-01-10T23:04:56.691325",
+            "summary": "Before implementing changes to a model, it must be validated and internally approved by the second line of defense (2LoD). If a model is revalidated, it needs internal approval to continue being used. An approver can grant conditional approval or reject the use of the model.",
+            "keywords": [
+                "validation",
+                "internal approval",
+                "2LoD",
+                "revalidation",
+                "conditional approval"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Exception to Model Approval",
+        "page_start": 11,
+        "text": "Firms may have a process for exception of model approval. Where a firm allows exceptions to use a model without model approval, this should be temporary and subject to rigorous control by the 2LoD. Such exceptions should be commensurate with the risk of the model.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 11,
+            "chunk_index": 36,
+            "token_count": 55,
+            "processing_timestamp": "2025-01-10T23:04:58.258433",
+            "summary": "Firms may have a process for exceptions to model approval, which should be temporary and closely monitored by the second line of defense (2LoD). These exceptions should be proportionate to the model's risk.",
+            "keywords": [
+                "exception process",
+                "model approval",
+                "temporary",
+                "rigorous control",
+                "2LoD",
+                "risk commensurate"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Ongoing Monitoring",
+        "page_start": 11,
+        "text": "Once a model goes into use, the model should undergo ongoing monitoring. Ongoing monitoring is typically conducted by the 1LoD and aims to confirm on a regular basis that the model is performing as intended. While a firm verifies that a model performs as intended at inception, the model may subsequently experience deterioration in its performance, due to changes in products, business activities, market conditions or any other circumstances. Ongoing monitoring plays an essential part in evaluating if the obsolescence of a model has occurred and verifying if the model needs to be modified or decommissioned.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 11,
+            "chunk_index": 37,
+            "token_count": 114,
+            "processing_timestamp": "2025-01-10T23:04:59.992830",
+            "summary": "Ongoing monitoring of models is crucial to ensure they continue to perform as intended over time. This monitoring, typically conducted by the 1st line of defense, helps detect any deterioration in performance due to various factors and assesses if modifications or decommissioning are necessary.",
+            "keywords": [
+                "ongoing monitoring",
+                "1LoD",
+                "model performance",
+                "deterioration",
+                "market conditions",
+                "obsolescence",
+                "modification"
+            ]
+        },
+        "usefulness_score": 0.9
+    },
+    {
+        "section_name": "Approach to Ongoing Monitoring",
+        "page_start": 11,
+        "text": "The methods and other approaches of ongoing monitoring depend on the purpose, nature, and risk of a model. Firms should choose the appropriate approaches of ongoing monitoring to ensure its effectiveness. Ongoing monitoring should be a documented process: the approaches (e.g., the frequency and method) and results should be adequately documented.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 11,
+            "chunk_index": 38,
+            "token_count": 63,
+            "processing_timestamp": "2025-01-10T23:05:01.426703",
+            "summary": "Effective ongoing monitoring of models depends on the purpose, nature, and risk involved. Firms must select suitable approaches and document the process, including frequency and methods used, to ensure effectiveness.",
+            "keywords": [
+                "methods",
+                "approaches",
+                "ongoing monitoring",
+                "purpose",
+                "nature",
+                "risk",
+                "effectiveness",
+                "documented process"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Model Validation",
+        "page_start": 11,
+        "text": "Models should be subject to independent validation. Model validation checks the soundness of the model design and concept, appropriateness of the model usage, and the need for restrictions on the use of the model. The results of model validation should be adequately documented and considered as an input for model approval. The 2LoD should have the authority to require the 1LoD to take appropriate remedial actions (e.g., restriction on or suspension of the model use) when material deficiencies are identified. 11",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 11,
+            "chunk_index": 39,
+            "token_count": 102,
+            "processing_timestamp": "2025-01-10T23:05:02.532542",
+            "summary": "Model validation is essential to ensure the accuracy and appropriateness of models used in decision-making. It involves checking the design, usage, and potential restrictions of the model. Results should be documented and used to inform model approval. The second line of defense (2LoD) should have the power to enforce remedial actions if significant issues are found.",
+            "keywords": [
+                "independent validation",
+                "model validation",
+                "model design",
+                "model usage",
+                "restrictions",
+                "2LoD",
+                "1LoD"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Types of Model Validation",
+        "page_start": 12,
+        "text": "Model validation should take place at various stages of a model lifecycle. All models should undergo initial validation prior to their official use unless an exception set out in 4.2. is granted. Where material changes are made to a model, the 2LoD should consider the necessity of a validation. After models go into use, the models should be subject to revalidation to evaluate whether they are actually performing as intended.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 12,
+            "chunk_index": 40,
+            "token_count": 84,
+            "processing_timestamp": "2025-01-10T23:05:04.203041",
+            "summary": "Model validation should occur at different points in a model's lifecycle, including before initial use and after any material changes. Ongoing revalidation is necessary to ensure that models are performing as expected.",
+            "keywords": [
+                "Model validation",
+                "stages",
+                "lifecycle",
+                "initial validation",
+                "material changes",
+                "revalidation",
+                "performance."
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "Methods and Scope of Model Validation",
+        "page_start": 12,
+        "text": "The methods and scope of a model validation depend on the purpose, nature, and risk of the model, as well as the data availability and validation type. Firms should choose appropriate approaches of model validations to effectively challenge the model. Where applicable, the methods of validation should include outcomes analysis (a comparison of outputs with actual corresponding data ⁠ —e.g., backtesting). The scope of model validation should cover evaluation of both model designs and control activities by the 1LoD. This may include, but is not limited to, model documentation, methodology specification, assumption, data, developmental evidence, model implementation, model usage, and ongoing monitoring.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 12,
+            "chunk_index": 41,
+            "token_count": 130,
+            "processing_timestamp": "2025-01-10T23:05:05.323394",
+            "summary": "Model validation methods and scope should be tailored to the purpose, nature, and risk of the model, as well as data availability and validation type. Firms should choose appropriate approaches to effectively challenge the model, including outcomes analysis like backtesting. Validation should cover evaluation of model designs and control activities by the 1LoD, including documentation, methodology, assumptions, data, evidence, implementation, usage, and monitoring.",
+            "keywords": [
+                "model validation",
+                "methods",
+                "scope",
+                "risk",
+                "data availability",
+                "outcomes analysis",
+                "model documentation"
+            ]
+        },
+        "usefulness_score": 0.9
+    },
+    {
+        "section_name": "Independence of Model Validation",
+        "page_start": 12,
+        "text": "Firms should ensure a sufficient level of independence of those who undertake model validation from the 1LoD. Independence may be supported by separation of reporting lines and/or incentive structures. Whereas in some cases model validation may be carried out by the 1LoD, such validation work should be subject to a review by the 2LoD.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 12,
+            "chunk_index": 42,
+            "token_count": 69,
+            "processing_timestamp": "2025-01-10T23:05:06.784607",
+            "summary": "Firms should ensure independence in model validation by separating reporting lines and incentive structures from the first line of defense (1LoD). While the 1LoD may conduct model validation in some cases, it should be reviewed by the second line of defense (2LoD).",
+            "keywords": [
+                "Independence",
+                "Model validation",
+                "1LoD",
+                "2LoD",
+                "Reporting lines",
+                "Incentive structures"
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "The Risk-Based Approach to Model Validation",
+        "page_start": 12,
+        "text": "The frequency, rigor, and scope of model validation should be commensurate with the risk of the model. In particular, the frequency and prioritization of revalidation should be consistent with the risk rating of a model, and firms should also take into account factors such as changes in the environment, deterioration in model performance, and restrictions of model usage. As part of the risk-based approach, revalidation of low risk models may be carried out on a non- regular basis e.g., where there has been a material change in the environment or a sign of deterioration in model performance. 12",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 12,
+            "chunk_index": 43,
+            "token_count": 118,
+            "processing_timestamp": "2025-01-10T23:05:08.241711",
+            "summary": "Model validation should be conducted in accordance with the risk level of the model, with the frequency and extent of revalidation being determined by the model's risk rating. Factors such as changes in the environment, model performance, and usage restrictions should also be considered. Low-risk models may undergo revalidation on a non-regular basis if there are significant changes or performance issues.",
+            "keywords": [
+                "frequency",
+                "rigor",
+                "scope",
+                "model validation",
+                "risk-based approach",
+                "revalidation",
+                "model performance"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Vendor Products",
+        "page_start": 13,
+        "text": "As many elements of vendor models and other third-party products (e.g., data and parameters used in a model) are often proprietary, firms are likely to have limited access to product information, such as the methodologies, assumptions, and data. Even with these constraints, the firms should manage and mitigate the associated risk to an acceptable level under their overall model risk management framework.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 13,
+            "chunk_index": 44,
+            "token_count": 74,
+            "processing_timestamp": "2025-01-10T23:05:09.616202",
+            "summary": "Firms may have limited access to proprietary information in vendor models and third-party products, but they should still manage and mitigate associated risks within their model risk management framework.",
+            "keywords": [
+                "vendor models",
+                "third-party products",
+                "proprietary",
+                "product information",
+                "methodologies",
+                "assumptions",
+                "data",
+                "risk management framework"
+            ]
+        },
+        "usefulness_score": 0.8
+    },
+    {
+        "section_name": "Risk Management of Vendor Products",
+        "page_start": 13,
+        "text": "The risk management of vendor models and other third party products involves approaches different from those for in-house models and products. Examples of such approaches include: selecting appropriate vendors and products; requesting vendors to provide information as detailed as possible so that the firm could have a better understanding of the model’s limitations and assumptions; performing model validation based on the best available information; and developing contingency plans for cases in which vendor products are no longer available.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 13,
+            "chunk_index": 45,
+            "token_count": 86,
+            "processing_timestamp": "2025-01-10T23:05:10.633264",
+            "summary": "Risk management for vendor models and third-party products requires unique strategies, such as selecting suitable vendors, gathering detailed information from vendors to understand model limitations, validating models based on available data, and creating contingency plans for situations where vendor products are no longer accessible.",
+            "keywords": [
+                "risk management",
+                "vendor models",
+                "third party products",
+                "selecting vendors",
+                "model validation",
+                "contingency plans"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Use of External Resources",
+        "page_start": 13,
+        "text": "Where firms use external resources in executing certain activities of the model risk management (e.g., model validation and model review), they should be able to understand and evaluate the results of the activities performed by the external service provider. Due diligence and other control processes associated with outsourcing should be consistent with the firm’s existing third-party risk management framework.",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 13,
+            "chunk_index": 46,
+            "token_count": 67,
+            "processing_timestamp": "2025-01-10T23:05:11.950636",
+            "summary": "Firms should ensure they can understand and evaluate the results of activities performed by external service providers when using them for model risk management tasks. Due diligence and control processes related to outsourcing should align with the firm's existing third-party risk management framework.",
+            "keywords": [
+                "external resources",
+                "model risk management",
+                "model validation",
+                "model review",
+                "results evaluation",
+                "outsourcing",
+                "due diligence"
+            ]
+        },
+        "usefulness_score": 1
+    },
+    {
+        "section_name": "Roles of Internal Audit",
+        "page_start": 13,
+        "text": "Internal audit functions should independently evaluate and verify whether the model risk management framework and the practice are comprehensive, rigorous, and effective. As part of the firm’s overall internal audit activities, findings from internal audit related to model risk management should be documented and reported to the board of directors or its relevant committees. Published on November 12, 2021",
+        "metadata": {
+            "document_title": "JFSA_2021_processed.json",
+            "page_number": 13,
+            "chunk_index": 47,
+            "token_count": 69,
+            "processing_timestamp": "2025-01-10T23:05:13.417058",
+            "summary": "Internal audit functions should assess the model risk management framework independently to ensure it is comprehensive and effective. Findings related to model risk management should be documented and reported to the board of directors. (Published on November 12, 2021)",
+            "keywords": [
+                "Internal audit",
+                "evaluate",
+                "verify",
+                "model risk management",
+                "framework",
+                "findings",
+                "board of directors."
+            ]
+        },
+        "usefulness_score": 1
+    }
+]

@@ -1,0 +1,9 @@
+{
+    "file_name": "processed_JFSA_2021_processed.json",
+    "total_records": 43,
+    "average_score": 0.9046511627906977,
+    "median_score": 1,
+    "std_dev": 0.1717604760402349,
+    "min_score": 0.2,
+    "max_score": 1
+}
