@@ -3,79 +3,10 @@ import json
 import re
 import Complexity
 import search_utils
-
-# def sanitize_json_content(content):
-#     """Sanitizes JSON content by handling various types of control characters and encoding issues."""
-#     # Replace common problematic characters
-#     replacements = {
-#         '\x00': '',  # null
-#         '\x0A': ' ', # line feed
-#         '\x0D': ' ', # carriage return
-#         '\x1A': '',  # substitute
-#         '\x1E': '',  # record separator
-#         '\x1F': '',  # unit separator
-#         '\x7F': '',  # delete
-#         '\u2028': ' ', # line separator
-#         '\u2029': ' ', # paragraph separator
-#     }
-    
-#     # First pass: handle known control characters
-#     for char, replacement in replacements.items():
-#         content = content.replace(char, replacement)
-    
-#     # Second pass: remove any remaining control characters
-#     content = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', content)
-    
-#     # Third pass: normalize whitespace
-#     content = re.sub(r'\s+', ' ', content)
-    
-#     return content.strip()
-
-# def load_summaries(directory):
-#     """
-#     Loads all JSON summaries from a given directory with proper sanitization.
-    
-#     Args:
-#         directory (str): Path to the directory containing JSON files.
-        
-#     Returns:
-#         dict: A dictionary mapping document IDs to their summaries
-#     """
-#     summaries = {}  # Change to dictionary
-    
-#     for filename in os.listdir(directory):
-#         if filename.endswith(".json"):
-#             try:
-#                 with open(os.path.join(directory, filename), 'r', encoding='utf-8') as file:
-#                     data = json.loads(file.read())
-#                     # Use the ID as the key
-#                     if 'id' in data:
-#                         summaries[data['id']] = data
-#                     # Also store using filename without extension
-#                     name_key = os.path.splitext(filename)[0]
-#                     summaries[name_key] = data
-#             except Exception as e:
-#                 print(f"Error loading {filename}: {e}")
-                
-#     return summaries
+import streamlit as st
 
 
-# def load_summaries(summaries_dir):
-#     """Load all summary files from the specified directory."""
-#     summaries = {}
-#     for filename in os.listdir(summaries_dir):
-#         if filename.endswith('.json'):
-#             try:
-#                 with open(os.path.join(summaries_dir, filename), 'r', encoding='utf-8') as f:
-#                     data = json.load(f)
-#                     # Use the ID as the key
-#                     summaries[data['id']] = data
-#                     # Also store with filename without extension as key for matching
-#                     name_key = os.path.splitext(filename)[0]
-#                     summaries[name_key] = data
-#             except Exception as e:
-#                 print(f"Error loading summary file {filename}: {e}")
-#     return summaries
+
 
 def enhance_query_with_summary(prompt, summaries):
     """
@@ -288,50 +219,7 @@ def create_synthetic_gpt_prompt(query: str, context: list) -> str:
 
     return prompt
 
-# def process_user_query(prompt, model, index, client, summaries_dir="summaries/"):
-#     """Process user query with support for multiple document summaries"""
-#     # Load summaries
-#     summaries = load_summaries(summaries_dir)
-    
-#     # Dictionary of document variations to check for
-#     doc_identifiers = {
-#         "SR117": ["SR117", "SR-11-7", "SR 11-7", "FED_SR117"],
-#         "ECB_GIM": ["ECB_GIM", "GIM", "ECB GIM", "ECB_GIM_Feb24"],
-#         "SS123": ["SS123", "SS-123", "SS 123", "PRA_ss123"],
-#         "TRIM": ["TRIM", "ECB TRIM", "ECB_TRIM2017", "TRIM2017"]
-#     }
-    
-#     # Check for document references in prompt
-#     prompt_lower = prompt.lower()
-#     enhanced_prompt = prompt
-#     found_documents = []
-    
-#     # Look for all matching documents
-#     for base_id, variations in doc_identifiers.items():
-#         if any(var.lower() in prompt_lower for var in variations):
-#             for var in variations:
-#                 if var in summaries:
-#                     summary = summaries[var]
-#                     if summary and 'summary' in summary:
-#                         print("summary {var} loaded", var)
-#                         found_documents.append(var)
-#                         enhanced_prompt += f"\n\nContext from {var}:\n{summary['summary']['full_summary']}"
-#                     break
 
-#     # Use the enhanced prompt for search
-#     results = search_utils.search_regulations(enhanced_prompt, index, model)
-#     complexity_score = Complexity.calculate_complexity_score(prompt)
-#     print ("prompt = ",prompt )
-
-#     if results:
-#         gpt_prompt = create_synthetic_gpt_prompt(enhanced_prompt, results)
-#         if found_documents:
-#             gpt_prompt += f"\n\nNote: Additional context was included from document summaries: {', '.join(found_documents)}"
-#         gpt_response = get_gpt_response(client, gpt_prompt)
-#         print("gpt_prompt = ", gpt_prompt)
-#         return results, complexity_score, gpt_response
-#     else:
-#         return results, complexity_score, None
 
 def get_friendly_document_name(doc_name: str) -> str:
     """
@@ -345,3 +233,52 @@ def get_friendly_document_name(doc_name: str) -> str:
         "processed_FED_sr1107a1_processed": "FED SR 11-7"
     }
     return document_mapping.get(doc_name, doc_name)
+
+
+def display_sidebar_contact():
+    """
+    Displays clickable contact information near the bottom of the sidebar.
+    """
+    # Reduced number of breaks to move contact info higher
+    st.markdown("<br>" *6, unsafe_allow_html=True)
+    
+    # Add contact info with mailto link
+    st.markdown(
+        """
+        <div style='color: #808080; font-size: 14px; padding: 10px 0;'>
+        Contact: <a href="mailto:georgios.argiris@gmail.com" style="color: #808080; text-decoration: none;">georgios.argiris@gmail.com</a>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+def setup_about_section():
+    """
+    Creates a discrete About section with proper state management
+    """
+    # Initialize the session state for about section visibility if it doesn't exist
+    st.markdown("<br>" * 7  , unsafe_allow_html=True)
+    if 'show_about' not in st.session_state:
+        st.session_state.show_about = False
+
+    # Create a small button that toggles the about section
+    if st.button('ℹ️ About', use_container_width=False):
+        st.session_state.show_about = not st.session_state.show_about
+
+    # Show about content only if state is True
+    if st.session_state.show_about:
+        with st.container():
+            st.markdown(
+                """
+                <div style='background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 10px 0;'>
+                <h3 style='font-size: 18px; margin-bottom: 10px;'>About this Application</h3>
+                <p style='font-size: 16px; line-height: 1.5;'>
+                This chatbot provides an intelligent interface to banking regulations focused on model risk management. 
+                It synthesizes information from multiple regulatory documents including ECB, PRA, FED, and JFSA guidelines. 
+                The tool uses advanced natural language processing to understand queries and provide relevant, accurate responses 
+                with proper citations to source documents.
+                </p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )

@@ -183,7 +183,7 @@ def setup_page_header():
     st.markdown(
         """
         <h1 style='font-size:24px; color:black; margin-bottom:0;'>
-        Banking Regulations Chatbot: Model Risk v 0.21
+        Banking Regulations Chatbot: Model Risk v 0.211
         </h1>
         """, 
         unsafe_allow_html=True
@@ -222,6 +222,10 @@ def setup_sidebar():
                 st.markdown(f"- [{display_name}]({document_links[ns]})")
             else:
                 st.warning(f"No link found for namespace: {ns}")
+
+        #utils.setup_about_section()        
+        utils.display_sidebar_contact()
+
 
 def initialize_components():
     try:
@@ -330,6 +334,7 @@ def process_user_query(prompt, model, index, client):
 
 def main():
     setup_page_header()
+
     model, index, client = initialize_components()
     
     if not all([model, index, client]):
@@ -366,6 +371,8 @@ def main():
                     "role": "assistant",
                     "content": "I couldn't find any relevant regulations. Could you please rephrase your question?"
                 })
+    
+
 
 
 if __name__ == "__main__":
