@@ -21,6 +21,11 @@ INDEX_HOST = secrets["INDEX_HOST"]
 INDEX_NAME = secrets["INDEX_NAME"]
 OPENAI_API_KEY = secrets["OPENAI_API_KEY"]
 
+#Parameters
+MATCH_THRESHOLD = 0.5
+MAX_TOKENS = 800
+
+
 NAMESPACES = [
     "ECB_GIM_Feb24", 
     "ECB_TRIM2017", 
@@ -128,7 +133,7 @@ def get_gpt_response(client, prompt: str) -> str:
         "FED_sr1107a1": "FED SR 11-7"
     }
     
-    MAX_TOKENS = 800
+    
     try:
         response = client.chat.completions.create(
             model="gpt-4",
@@ -323,13 +328,19 @@ def _display_reference_details(match):
 
 def process_user_query(prompt, model, index, client):
     results = search_regulations(prompt, index, model)
+    
+    # Filter results based on MATCH_THRESHOLD
+    filtered_results = [r for r in results if r.score > MATCH_THRESHOLD]
+    
     complexity_score = Complexity.calculate_complexity_score(prompt)
     
-    if results:
-        gpt_prompt = create_synthetic_gpt_prompt(prompt, results)
+    if filtered_results:
+        gpt_prompt = create_synthetic_gpt_prompt(prompt, filtered_results)
         gpt_response = get_gpt_response(client, gpt_prompt)
-        return results, complexity_score, gpt_response
-    return results, complexity_score, None
+        return filtered_results, complexity_score, gpt_response
+    else:
+        # Return empty results and a standard message when no matches meet the threshold
+        return [], complexity_score, "There is no matching information in the search documents. Please modify your query!"
 
 
 def main():
@@ -357,7 +368,7 @@ def main():
                 
             st.markdown(Complexity.format_complexity_display(complexity_score))
         
-            if results and gpt_response:
+            if results:  # Only display references if we have results that meet the threshold
                 message_placeholder.markdown(gpt_response)
                 st.session_state.messages.append({
                     "role": "assistant",
@@ -366,14 +377,11 @@ def main():
                 
                 display_references_by_complexity(results, complexity_score)
             else:
-                message_placeholder.markdown("I couldn't find any relevant regulations. Could you please rephrase your question?")
+                message_placeholder.markdown(gpt_response)  # This will show our "no matching information" message
                 st.session_state.messages.append({
                     "role": "assistant",
-                    "content": "I couldn't find any relevant regulations. Could you please rephrase your question?"
+                    "content": gpt_response
                 })
-    
-
-
 
 if __name__ == "__main__":
     main()
