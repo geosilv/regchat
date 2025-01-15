@@ -1,0 +1,28 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Secrets files
+secrets.json
+CleanJson.py
+EnrichJson.py
+EvaluateJson.py
+JsonToPinecone.py
+NewChunkProcess.py
+RegulationsProject.code-workspace
+ValidateSummariesJson.py
+.streamlit\secrets.json
+.streamlit/secrets.toml
+LanchainProcessedDocs/
+prompts/
+summaries/
+.streamlit/
+
+# VS Code settings
+.vscode/
+
+# Logs
+*.log
