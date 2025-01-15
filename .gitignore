@@ -9,6 +9,10 @@ venv/
 secrets.json
 .streamlit\secrets.json
 .streamlit/secrets.toml
+LangchainProcessedDocs/
+prompts/
+summaries/
+.streamlit/
 
 # VS Code settings
 .vscode/
