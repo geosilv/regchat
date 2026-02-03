@@ -90,7 +90,7 @@ pinecone-plugin-inference==1.1.0
 pinecone-plugin-interface==0.0.7
 preshed==3.0.9
 propcache==0.2.1
-protobuf==6.31.1
+protobuf==6.33.5
 prov==2.0.1
 puremagic==1.28
 pyarrow==18.1.0
